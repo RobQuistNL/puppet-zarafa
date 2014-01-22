@@ -8,4 +8,5 @@ define zarafa::alias (  #Name = alias email
       target  => "/etc/postfix/aliases",
       content => "${name}      ${mapTo}",
   }
+  notify{"zarafa-alias-${name}-to-${mapTo}": }
 }
