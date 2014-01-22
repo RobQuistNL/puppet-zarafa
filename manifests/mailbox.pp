@@ -6,7 +6,7 @@ define zarafa::mailbox (       #Name = email address
   $fullName         = undef,  #A general readable name. Defaults to $emailAddress
   $password,                  #Password for the account
 ) {
-  $zadmin = $zarafa::params::zarafaAdminLocation
+  $zadmin = 'zarafa-admin'
   $emailAddress = $name
   
   if (undef == $username) {
@@ -21,6 +21,6 @@ define zarafa::mailbox (       #Name = email address
     $realFullName = $fullName
   }
 
-  exec{ "${zadmin} -c '${username}' -p '${password}' -e '${emailAddress}' -f '${fullName}'": } #@todo onlyif zarafa-admin --details {user} != Unable to resolve user
+  exec{ "${zadmin} -c '${realUsername}' -p '${password}' -e '${emailAddress}' -f '${realFullName}'": } #@todo onlyif zarafa-admin --details {user} != Unable to resolve user
 
 }

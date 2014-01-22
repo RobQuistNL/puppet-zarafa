@@ -1,3 +1,3 @@
-class zarafa::params () {
+class zarafa::params {
   $zarafaAdminLocation = '/usr/bin/zarafa-admin'
 }
