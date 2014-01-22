@@ -2,11 +2,11 @@
 #
 
 define zarafa::alias (  #Name = alias email
-  $mapTo,               #This is what the alias will be mapped to
+  $mapto,               #This is what the alias will be mapped to
 ) {
-  concat::fragment{ "zarafa-alias-${name}-to-${mapTo}":
+  concat::fragment{ "zarafa-alias-${name}-to-${mapto}":
       target  => "/etc/postfix/aliases",
-      content => "${name}      ${mapTo}",
+      content => "${name}      ${mapto}",
   }
-  notify{"zarafa-alias-${name}-to-${mapTo}": }
+  notify{"zarafa-alias-${name}-to-${mapto}": }
 }
