@@ -12,7 +12,7 @@ class zarafa (
       owner => root,
       group => root,
   }
-  ->
+
   Zarafa::Alias<<||>>
   ->
   exec {'postmap /etc/postfix/aliases': }
@@ -23,7 +23,7 @@ class zarafa (
       owner => root,
       group => root,
   }
-  ->
+
   Zarafa::Domain<<||>>
   ->
   exec {'postmap /etc/postfix/mydomains': }
