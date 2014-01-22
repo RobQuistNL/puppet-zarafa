@@ -1,7 +1,7 @@
 # A generic mailbox for 1 user.
 #
 
-define zarafa::mailbox (
+class zarafa::mailbox (
   $emailAddress,              #Fully written out
   $username         = undef,  #Will most likely be the same as the e-mail address. Defaults to $emailAddress
   $name             = undef,  #A general readable name. Defaults to $emailAddress
