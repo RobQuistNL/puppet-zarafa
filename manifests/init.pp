@@ -2,27 +2,27 @@ class zarafa (
   $zarafaAdminLocation = params_lookup('zarafaAdminLocation'),
   ) {
 
-  #basic domains we need
-  zarafa::domain{'localhost': }
-  zarafa::domain{$::fqdn: }
-
-  #the alias files
   concat { "/etc/postfix/aliases":
       mode => 644,
       owner => root,
       group => root,
+      ensure_newline => true
   }
-
-  Zarafa::Alias<<||>>
-  ->
-  exec {'postmap /etc/postfix/aliases': }
-
-  #the domains
+  
   concat { "/etc/postfix/mydomains":
       mode => 644,
       owner => root,
       group => root,
+      ensure_newline => true
   }
+
+  #basic domains we need
+  zarafa::domain{'localhost': }
+  zarafa::domain{$::fqdn: }
+
+  Zarafa::Alias<<||>>
+  ->
+  exec {'postmap /etc/postfix/aliases': }
 
   Zarafa::Domain<<||>>
   ->
