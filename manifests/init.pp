@@ -1,5 +1,5 @@
 class zarafa (
-  $zarafaAdminLocation = getparam('zarafaAdminLocation'),
+  $zarafaAdminLocation = params_lookup('zarafaAdminLocation'),
   ) {
 
   #nothing yet
