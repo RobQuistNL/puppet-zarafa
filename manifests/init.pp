@@ -1,6 +1,10 @@
 class zarafa (
   $zarafaAdminLocation = params_lookup('zarafaAdminLocation'),
   ) {
+  
+  service{'postfix': 
+    ensure => running
+  }
 
   concat { "/etc/postfix/aliases":
       mode => 644,
@@ -22,11 +26,15 @@ class zarafa (
 
   Zarafa::Alias<<||>>
   ->
-  exec {'postmap /etc/postfix/aliases': }
+  exec {'postmap /etc/postfix/aliases': 
+    notify => Service['postfix']
+  }
 
   Zarafa::Domain<<||>>
   ->
-  exec {'postmap /etc/postfix/mydomains': }
+  exec {'postmap /etc/postfix/mydomains': 
+    notify => Service['postfix']
+  }
 
   Zarafa::Mailbox <<||>>
 
