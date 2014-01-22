@@ -1,5 +1,5 @@
 class zarafa (
-  $zarafaAdminLocation,
+  $zarafaAdminLocation = param('zarafaAdminLocation'),
   ) {
 
   #nothing yet
